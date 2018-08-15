@@ -3,6 +3,19 @@ const fs = require('fs')
 
 const data = fs.readFileSync('./data.1.txt')
 
+const genConnections = triangle => {
+  const list = []
+  triangle.forEach((line, i) => {
+    line.forEach((_, j) => {
+      list.push([[i, j], [i, j + 1]])
+      list.push([[i, j], [i + 1, j + 1]])
+    })
+  });
+  return new Map(list)
+}
+
+
+
 const makeGraph = list => {
   // console.log(list)
   // Key is position
@@ -12,11 +25,11 @@ const makeGraph = list => {
     [`${i}-${j} ${i+1}-${j+1}`],
   ]))
 
-  return R.flatten(conections)
+  return new Map(conections)
 }
 
 const shortestPath = R.compose(
-  makeGraph,
+  genConnections,
   R.map(e => R.map(Number, R.split(' ', e))),
   R.split('\n'),
   e => e.toString()
@@ -25,3 +38,5 @@ const shortestPath = R.compose(
 console.log(
   shortestPath(data)
 )
+
+console.log('test')

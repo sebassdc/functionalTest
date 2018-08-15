@@ -8,3 +8,24 @@ I need to construct a graph from the lines, then i read the lines put it on an a
 
 The triangle can be seen as a connected graph. And we can asume
 that it will be symmetric. To make the node connection, we can read the elements of the sub array of each line and asign as a child the line[n] and line[n + 1] element.
+
+I make a Map object of the indexes describing the directed conections of the graph
+given the structure:
+```
+[
+  [a],
+  [b, c],
+  [d, e, f],
+]
+```
+We generate:
+```
+Map {
+  [ 0, 0 ] => [ 0, 1 ],
+  [ 0, 0 ] => [ 1, 1 ],
+  [ 1, 0 ] => [ 1, 1 ],
+  [ 1, 0 ] => [ 2, 1 ],
+  [ 1, 1 ] => [ 1, 2 ],
+  [ 1, 1 ] => [ 2, 2 ]
+}
+```
