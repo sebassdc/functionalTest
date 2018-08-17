@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "differentia": "^1.1.2",
     "ramda": "^0.25.0"
+  },
+  "bin": {
+    "minpath": "bin/cli.js"
   }
 }
